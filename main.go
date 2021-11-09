@@ -4,12 +4,12 @@ import (
 	"fmt"
 	"sync"
 
-	"github.com/toxuin/alarmserver/buses/mqtt"
-	"github.com/toxuin/alarmserver/buses/webhooks"
-	conf "github.com/toxuin/alarmserver/config"
-	"github.com/toxuin/alarmserver/servers/ftp"
-	"github.com/toxuin/alarmserver/servers/hikvision"
-	"github.com/toxuin/alarmserver/servers/hisilicon"
+	"github.com/irussellps/alarmserver/buses/mqtt"
+	"github.com/irussellps/alarmserver/buses/webhooks"
+	conf "github.com/irussellps/alarmserver/config"
+	"github.com/irussellps/alarmserver/servers/ftp"
+	"github.com/irussellps/alarmserver/servers/hikvision"
+	"github.com/irussellps/alarmserver/servers/hisilicon"
 )
 
 var config *conf.Config

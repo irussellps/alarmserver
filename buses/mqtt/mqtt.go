@@ -2,11 +2,12 @@ package mqtt
 
 import (
 	"fmt"
-	MQTT "github.com/eclipse/paho.mqtt.golang"
-	"github.com/toxuin/alarmserver/config"
 	"math/rand"
 	"strconv"
 	"time"
+
+	MQTT "github.com/eclipse/paho.mqtt.golang"
+	"github.com/irussellps/alarmserver/config"
 )
 
 type Bus struct {

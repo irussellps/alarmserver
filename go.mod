@@ -1,4 +1,4 @@
-module github.com/toxuin/alarmserver
+module github.com/irussellps/alarmserver
 
 go 1.16
 

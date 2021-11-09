@@ -37,7 +37,8 @@ mqtt:
   topicroot: camera-alerts
 
 webhooks:
-  enabled: true
+  enabled: false
+  telegram: true
   urls:
     - https://api.telegram.org/bot1256530991:AAGgKbMMzDiSLhfbYJWTiEixbLM5cKmYNyA/sendMessage?chat_id=-565314147&text=hello
 
