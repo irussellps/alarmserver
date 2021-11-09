@@ -9,7 +9,7 @@ import (
 type Config struct {
 	Debug     bool            `json:"debug"`
 	Mqtt      MqttConfig      `json:"mqtt"`
-	Webhooks  WebhooksConfig  `json:"webhooks"`
+	Webhooks  WebhooksConfig  `json:"webhooks"`// duplicate
 	Hisilicon HisiliconConfig `json:"hisilicon"`
 	Hikvision HikvisionConfig `json:"hikvision"`
 	Ftp       FtpConfig       `json:"ftp"`
@@ -24,7 +24,8 @@ type MqttConfig struct {
 	TopicRoot string `json:"topicRoot"`
 }
 
-type WebhooksConfig struct {
+
+type WebhooksConfig struct {//duplicate webhjooks, add variable?
 	Enabled bool     `json:"enabled"`
 	Urls    []string `json:"urls"`
 }
@@ -100,7 +101,7 @@ func (c *Config) Load() *Config {
 	myConfig := Config{
 		Debug:     viper.GetBool("debug"),
 		Mqtt:      MqttConfig{},
-		Webhooks:  WebhooksConfig{},
+		Webhooks:  WebhooksConfig{},//duplicate
 		Hisilicon: HisiliconConfig{},
 		Hikvision: HikvisionConfig{
 			Enabled: viper.GetBool("hikvision.enabled"),
@@ -113,7 +114,7 @@ func (c *Config) Load() *Config {
 			panic(fmt.Errorf("unable to decode mqtt config, %v", err))
 		}
 	}
-	if viper.IsSet("webhooks") {
+	if viper.IsSet("webhooks") {//duplicate
 		err := viper.Sub("webhooks").Unmarshal(&myConfig.Webhooks)
 		if err != nil {
 			panic(fmt.Errorf("unable to decode webhooks config, %v", err))

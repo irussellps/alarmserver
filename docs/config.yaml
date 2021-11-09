@@ -1,13 +1,13 @@
-debug: false
+debug: true
 
 hikvision:
   enabled: true
   cams:
     myCam:
-      address: 192.168.1.69
+      address: 10.10.10.93
       https: false
       username: admin
-      password: admin1234
+      password: Munckt0n
       rawTcp: false
     myDoorbell:
       address: 192.168.1.13
@@ -39,5 +39,7 @@ mqtt:
 webhooks:
   enabled: true
   urls:
-    - "https://example.com/camera-webhooks"
-    - "https://example.com/another-endpoint"
+    - https://api.telegram.org/bot1256530991:AAGgKbMMzDiSLhfbYJWTiEixbLM5cKmYNyA/sendMessage?chat_id=-565314147&text=hello
+
+    #- "https://example.com/camera-webhooks"
+    #- "https://example.com/another-endpoint"

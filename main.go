@@ -2,13 +2,14 @@ package main
 
 import (
 	"fmt"
+	"sync"
+
 	"github.com/toxuin/alarmserver/buses/mqtt"
 	"github.com/toxuin/alarmserver/buses/webhooks"
 	conf "github.com/toxuin/alarmserver/config"
 	"github.com/toxuin/alarmserver/servers/ftp"
 	"github.com/toxuin/alarmserver/servers/hikvision"
 	"github.com/toxuin/alarmserver/servers/hisilicon"
-	"sync"
 )
 
 var config *conf.Config
@@ -42,6 +43,8 @@ func main() {
 			fmt.Println("WEBHOOK BUS INITIALIZED")
 		}
 	}
+
+	//comment
 
 	messageHandler := func(topic string, data string) {
 		if config.Mqtt.Enabled {
