@@ -1,0 +1,44 @@
+debug: true
+
+hikvision:
+  enabled: true
+  cams:
+    myCam:
+      address: 10.10.10.93
+      https: false
+      username: admin
+      password: Munckt0n
+      rawTcp: false
+    myDoorbell:
+      address: 192.168.1.13
+      https: false
+      username: admin
+      password: admin666
+      # USE RAW TCP IF HTTP STREAMING DOES NOT WORK
+      rawTcp: true
+
+hisilicon:
+  enabled: true
+  port: 15002
+
+ftp:
+  enabled: true
+  port: 21
+  password: "root"
+  allowFiles: true
+  rootPath: "./ftp"
+
+mqtt:
+  enabled: true
+  username: alarmserver
+  password: "assword"
+  port: 1883
+  server: "mqtt.example.com"
+  topicroot: camera-alerts
+
+webhooks:
+  enabled: false
+  telegram: false
+  urls:
+    - "https://example.com/camera-webhooks"
+    - "https://example.com/another-endpoint"

@@ -27,7 +27,7 @@ type MqttConfig struct {
 
 type WebhooksConfig struct {
 	Enabled  bool     `json:"enabled"`
-	Telegram bool     `json:"telegram"`
+	Telegram bool     `json:"enabled"`
 	Urls     []string `json:"urls"`
 }
 
@@ -102,7 +102,7 @@ func (c *Config) Load() *Config {
 	myConfig := Config{
 		Debug:     viper.GetBool("debug"),
 		Mqtt:      MqttConfig{},
-		Webhooks:  WebhooksConfig{}, //duplicate
+		Webhooks:  WebhooksConfig{},
 		Hisilicon: HisiliconConfig{},
 		Hikvision: HikvisionConfig{
 			Enabled: viper.GetBool("hikvision.enabled"),
@@ -115,7 +115,7 @@ func (c *Config) Load() *Config {
 			panic(fmt.Errorf("unable to decode mqtt config, %v", err))
 		}
 	}
-	if viper.IsSet("webhooks") { //duplicate
+	if viper.IsSet("webhooks") {
 		err := viper.Sub("webhooks").Unmarshal(&myConfig.Webhooks)
 		if err != nil {
 			panic(fmt.Errorf("unable to decode webhooks config, %v", err))
