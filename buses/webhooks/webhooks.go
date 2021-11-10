@@ -29,21 +29,27 @@ func (webhooks *Bus) Initialize(config config.WebhooksConfig) {
 
 func (webhooks *Bus) SendMessage(topic string, data string) {
 	for _, url := range webhooks.urls {
-		//combinevalues := string(topic) + string(data)
-		print("Topic: " + string(topic) + "\n")
-		print("Data: " + string(data) + "\n")
-		topic = strings.ToUpper(topic)
-		data = strings.ToUpper(data)
-		tstr := strings.ReplaceAll(topic, "/", " - ")
-		dstr := strings.ReplaceAll(data, "/", " - ")
-		//replacing spaces with url encoding
-		//combinedurloutput := strings.ReplaceAll(combinevalues, " ", "%20") // replacing space with %20
-		//printing entire
-		print("url&combinedoutput: " + url + tstr + dstr + "\n\n\n")
-		url = url + tstr + " - " + dstr
-		print(url + "\n\n\n")
-		payload := WebhookPayload{Topic: topic, Data: data}
-		go webhooks.send(url, payload)
+		if webhooks.telegram {
+			//combinevalues := string(topic) + string(data)
+			//print("Topic: " + string(topic) + "\n")
+			//print("Data: " + string(data) + "\n")
+			topic = strings.ToUpper(topic)
+			data = strings.ToUpper(data)
+			tstr := strings.ReplaceAll(topic, "/", " - ")
+			dstr := strings.ReplaceAll(data, "/", " - ")
+			//replacing spaces with url encoding
+			//combinedurloutput := strings.ReplaceAll(combinevalues, " ", "%20") // replacing space with %20
+			//printing entire
+			//print("url&combinedoutput: " + url + tstr + dstr + "\n\n\n")
+			url = url + tstr + " - " + dstr
+			//print(url + "\n\n\n")
+			payload := WebhookPayload{Topic: topic, Data: data}
+			go webhooks.send(url, payload)
+		} else {
+			//print("Whooopsy, no telegram set")
+			payload := WebhookPayload{Topic: topic, Data: data}
+			go webhooks.send(url, payload)
+		}
 	}
 }
 
